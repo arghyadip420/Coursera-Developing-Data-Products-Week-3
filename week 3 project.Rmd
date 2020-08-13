@@ -1,0 +1,31 @@
+---
+title: "Week 3 Project"
+output: html_document
+date: '`r format(Sys.time(), "%d %B, %Y")`'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Overview
+
+In this project I used plotly to create a plot of Canada's population by age group in 2018 and 2019.
+
+```{r }
+# loading packages
+library(plotly)
+library(ggplot2)
+```
+
+
+```{r }
+# data
+popn=read.csv('popn.csv')
+dim(popn)
+p <- plot_ly(data = popn, x = ~as.factor(age), y = ~population, color = ~as.factor(year), type="bar") %>% layout(title = "Population by age group (50+)", xaxis=list(title="Age group"), yaxis=list(title="Population"))
+p
+```
+
+
+
